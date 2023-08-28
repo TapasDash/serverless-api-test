@@ -1,0 +1,18 @@
+service: aws-node-http-api-project
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  # name of handler fn to be on lambda
+  tapasHelloFn:
+    #specify the above fn code
+    handler: hello.handler
+    #to triggeger the lamdba fucntion, i.e how to invoke this lambda function
+    events:
+      - httpApi:
+          path: /hello
+          method: GET
